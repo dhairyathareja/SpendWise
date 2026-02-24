@@ -44,5 +44,3 @@ mongoose.connect(process.env.DB_URI)
     })
     .catch(err => console.log("❌ DB Error:", err));    
 
-
-// tests auto docs test
