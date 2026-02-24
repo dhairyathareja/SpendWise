@@ -1,3 +1,4 @@
+// Import Packages
 import mongoose from "mongoose";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -11,12 +12,13 @@ dotenv.config();
 
 
 
+// Import Routes
+import authRouter from "./src/routes/auth.route.js"
+
+
 
 const app = express();
 
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use(bodyParser.json({ limit: "4kb" }));
@@ -24,15 +26,9 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "4kb" }));
 app.use(cookieParser());
 
 
-// app.use(express.static(path.join(__dirname, '../public/build')));
+// Routing APIs
+app.use('/auth',authRouter);
 
-
-
-
-
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../../frontend/build/index.js'));
-// });
 
 
 const PORT = process.env.PORT || 4444;
