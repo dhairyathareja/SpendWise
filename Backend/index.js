@@ -13,7 +13,8 @@ dotenv.config();
 
 
 // Import Routes
-import authRouter from "./src/routes/auth.route.js"
+import authRouter from "./src/routes/auth.route.js";
+import cloundAccountRouter from './src/routes/cloudAccount.route.js';
 
 
 
@@ -29,6 +30,7 @@ app.use(cookieParser());
 // Routing APIs
 app.use('/auth',authRouter);
 
+app.use('/cloudAccount',cloundAccountRouter);
 
 
 const PORT = process.env.PORT || 4444;

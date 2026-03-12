@@ -1,0 +1,20 @@
+<button onclick="launchAWS()" style="
+padding:12px 22px;
+background:#ff9900;
+border:none;
+color:white;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+">
+Connect AWS Account
+</button>
+
+<script>
+function launchAWS(){
+window.open(
+"https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://spendwise-project.s3.ap-south-1.amazonaws.com/CloudFormation-template/spendwise-role-template.yaml",
+"_blank"
+);
+}
+</script>

@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: SpendWise Read Only Role
+
+Parameters:
+  SpendWiseAccountId:
+    Type: String
+    Default: 291041007744
+
+Resources:
+
+  SpendWiseRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: SpendWiseReadOnlyRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::${SpendWiseAccountId}:root"
+            Action: "sts:AssumeRole"
+
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/ReadOnlyAccess
+
+Outputs:
+  RoleArn:
+    Value: !GetAtt SpendWiseRole.Arn
