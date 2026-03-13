@@ -27,9 +27,18 @@ const accountSchema = new Schema({
         required:true,
         default:"failed"
     },
-    lastScanAt:{
-        type:Date
-    },
+    scanHistory:[
+        {
+            scanId:{
+                type: String,
+                required: true
+            },
+            scanDate:{
+                type: Date,
+                required: true
+            }
+        }
+    ],
     createdAt:{
         type: Date,
         default:Date.now
