@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
 
@@ -16,6 +16,7 @@ dotenv.config();
 import authRouter from "./src/routes/auth.route.js";
 import cloundAccountRouter from './src/routes/cloudAccount.route.js';
 import reportRouter from "./src/routes/report.route.js";
+import notifyRouter from "./src/routes/notify.route.js";
 
 
 const app = express();
@@ -33,6 +34,8 @@ app.use('/auth',authRouter);
 app.use('/cloudAccount',cloundAccountRouter);
 
 app.use('/report',reportRouter);
+
+app.use('/notify',notifyRouter);
 
 
 const PORT = process.env.PORT || 4444;
