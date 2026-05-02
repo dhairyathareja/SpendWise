@@ -17,6 +17,7 @@ import authRouter from "./src/routes/auth.route.js";
 import cloundAccountRouter from './src/routes/cloudAccount.route.js';
 import reportRouter from "./src/routes/report.route.js";
 import notifyRouter from "./src/routes/notify.route.js";
+import findingRouter from "./src/routes/finding.route.js";
 
 
 const app = express();
@@ -36,6 +37,8 @@ app.use('/cloudAccount',cloundAccountRouter);
 app.use('/report',reportRouter);
 
 app.use('/notify',notifyRouter);
+
+app.use('/finding',findingRouter);
 
 
 const PORT = process.env.PORT || 4444;
