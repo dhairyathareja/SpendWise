@@ -13,7 +13,7 @@ const blogs = [
   {
     id: 1,
     title: 'How to Launch an EC2 Instance',
-    videoUrl: 'https://www.youtube.com/embed/2u3_lYm6Kz4',
+    videoUrl: 'https://www.youtube.com/embed/-D5jxOAKUys',
     shortInfo: 'A comprehensive guide for beginners to launch their first virtual server in the cloud using AWS EC2.',
     steps: [
       'Log into the AWS Management Console and navigate to EC2.',
@@ -33,7 +33,7 @@ const blogs = [
   {
     id: 2,
     title: 'Properly Stopping EC2 Instances',
-    videoUrl: 'https://www.youtube.com/embed/6_H6nBqQ3pI',
+    videoUrl: 'https://www.youtube.com/embed/W9ifBnz1HSc',
     shortInfo: 'Learn the difference between stopping and terminating instances, and how to manage your running costs effectively.',
     steps: [
       'Go to the EC2 Dashboard and select "Instances (running)".',
@@ -51,7 +51,7 @@ const blogs = [
   {
     id: 3,
     title: 'Creating Your First S3 Bucket',
-    videoUrl: 'https://www.youtube.com/embed/e6w9LwZJFIA',
+    videoUrl: 'https://www.youtube.com/embed/iNX9PKJ8ZZs',
     shortInfo: 'A step-by-step walkthrough to create a secure S3 bucket for storing your files and data in the cloud.',
     steps: [
       'Navigate to the S3 service in the AWS Console.',
