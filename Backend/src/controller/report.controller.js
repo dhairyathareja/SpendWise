@@ -276,3 +276,21 @@ export const latestScans = ErrorWrapper(async (req, res, next) => {
     throw new ErrorHandler(401, `Error in fetching latest scans`);
   }
 });
+
+export const getReportById = ErrorWrapper(async (req, res, next) => {
+  try {
+    const { scanId } = req.params;
+    const report = await Reports.findById(scanId);
+    
+    if (!report) {
+      throw new ErrorHandler(404, "Report not found");
+    }
+
+    res.status(200).json({
+      success: true,
+      report
+    });
+  } catch (error) {
+    throw new ErrorHandler(500, `Error fetching report`);
+  }
+});

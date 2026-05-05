@@ -34,7 +34,7 @@ export const generateRecommendation = (finding) => {
     if (resourceType === "EC2" && issue === "Idle Instance") {
       rec = {
         action: "Stop or terminate idle instance",
-        suggestedType: "t2.micro",
+        suggestedType: "t2.micro", 
         message: `Instance is idle (CPU: ${metadata?.avgCpu}%)`,
         estimatedSavings: "Save up to 100% cost",
       };
