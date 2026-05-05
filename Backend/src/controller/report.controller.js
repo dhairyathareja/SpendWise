@@ -19,8 +19,7 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 import Reports from "../model/reports.model.js";
 import Accounts from "../model/cloudAccounts.model.js";
 import { generateFindings, saveFindings } from "../services/finding.service.js";
-
-
+import { processRecommendations } from "../services/jobs/processRecommendations.js";
 
 // Supporting Functions
 
@@ -174,13 +173,13 @@ async function scanS3(credentials) {
 // API Controller
 
 export const scanAccount = ErrorWrapper(async (req, res, next) => {
-  const { roleArn } = req.body;
+  const { roleArn, email } = req.body;
 
   const scanStart = Date.now();
 
   const creds = await assumeClientRole(roleArn);
 
-  let newScanId="";
+  let newScanId = "";
 
   try {
     const ec2Global = new EC2Client({ region: "ap-south-1", creds });
@@ -211,7 +210,7 @@ export const scanAccount = ErrorWrapper(async (req, res, next) => {
     try {
       const newScan = await Reports.create(report);
 
-      newScanId=newScan._id;
+      newScanId = newScan._id;
 
       await Accounts.updateOne(
         { roleArn: roleArn },
@@ -229,8 +228,15 @@ export const scanAccount = ErrorWrapper(async (req, res, next) => {
     }
 
     setImmediate(async () => {
-      const findings = generateFindings(report, newScanId);
-      await saveFindings(findings); 
+      try {
+        const findings = generateFindings(report, newScanId);
+
+        await saveFindings(findings);
+
+        processRecommendations(newScanId, email);
+      } catch (err) {
+        console.error("Background scan pipeline error:", err.message);
+      }
     });
 
     res.status(200).json({
@@ -239,7 +245,7 @@ export const scanAccount = ErrorWrapper(async (req, res, next) => {
       report: report,
     });
   } catch (error) {
-    throw new ErrorHandler(401,  error.message); //`Error in Generating Report`
+    throw new ErrorHandler(401, error.message); //`Error in Generating Report`
   }
 });
 
