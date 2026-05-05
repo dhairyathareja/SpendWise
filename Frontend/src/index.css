@@ -1783,3 +1783,13 @@ select.input-field optgroup {
 }
 
 
+
+/* Hide Spline Logo */
+.stat-card canvas {
+  outline: none !important;
+}
+
+/* Position the spline scene to hide the watermark at the bottom */
+.stat-card div > div > div {
+  margin-top: -10px;
+}
