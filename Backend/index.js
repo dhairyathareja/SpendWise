@@ -24,7 +24,7 @@ import recommendationRouter from "./src/routes/recommendation.route.js";
 const app = express();
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://43.204.117.57'],
     credentials: true
 }));
 

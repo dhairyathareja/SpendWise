@@ -88,7 +88,6 @@ export const saveFindings = ErrorWrapper(async (findings) => {
   try {
     // 1️⃣ Safety check
     if (!findings || findings.length === 0) {
-      console.log("No findings to save");
       return [];
     }
 

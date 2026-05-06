@@ -58,11 +58,9 @@ Recommendation: ${recommendation}
       },
     };
 
-    console.log("Params", params)
     const command = new SendEmailCommand(params);
     const response = await sesClient.send(command);
-    console.log("SES RESPONSE:", response);
-
+    
 
   } catch (error) {
     console.error("Email Error:", error);

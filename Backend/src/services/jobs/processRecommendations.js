@@ -5,14 +5,11 @@ import { sendCostAlert } from "../notification.service.js";
 
 export const processRecommendations = (scanId, userEmail) => {
 
-  console.log("Email",userEmail);
-
+  
   setImmediate(async () => {
     try {
-      console.log("🚀 Running recommendation job for:", scanId);
-
+  
       const findings = await Findings.find({ scanId });
-      console.log("Fiindings",findings);
       if (!findings.length) return;
 
       for (const finding of findings) {
@@ -36,13 +33,7 @@ export const processRecommendations = (scanId, userEmail) => {
 
         // 🔔 notify only CRITICAL
         if (["CRITICAL", "HIGH"].includes(finding.severity)) {
-          console.log(
-            "📩 Sending email for:",
-            rec.resourceId,
-            "| Severity:",
-            finding.severity,
-          );
-
+  
           try {
             await sendCostAlert({
               userEmail,
